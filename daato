@@ -1,0 +1,64 @@
+#! /usr/bin/env bash
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+DAATO_REPO="git@github.com:daatotech/core.git"
+# @describe daato infrastructure tools
+
+# @cmd create, update, or destroy an instance
+# @arg instance instance to modify
+# @option -c --cloud[=azure|aws] cloud provider
+# @flag -d --destroy destroy the infrastructure
+instance() {
+  pushd ${SCRIPT_DIR}/stacks/${argc_cloud}-instance > /dev/null
+  if [ "${argc_destroy}" ]; then
+    terraform destroy -auto-approve -var-file=./terraform.${argc_instance}.tfvars.json
+  else
+    terraform init
+    terraform apply -auto-approve -var-file=./terraform.${argc_instance}.tfvars.json
+  fi
+  popd > /dev/null
+}
+
+# @cmd create or update the setup
+# @flag -d --destroy destroy the infrastructure
+# @flag -b --build build docker image
+setup() {
+  pushd ${SCRIPT_DIR}/stacks/setup > /dev/null
+  common_subscription_id=$(az account show --subscription common | jq .id -r)
+  terraform init -backend-config=subscription_id=${common_subscription_id}
+  terraform apply -auto-approve
+  if [ "${argc_build}" ]; then
+    build -a api
+    build -a frontend
+  fi
+  popd > /dev/null
+}
+
+# @cmd build the docker image
+# @arg identifier instance identifier
+# @option -a --app[=api|frontend] which app to build
+build() {
+  identifier=${argc_identifier}
+  echo "building ${argc_app} image for ${identifier}..."
+  output_dir="${SCRIPT_DIR}/deployments/${identifier}/image"
+  mkdir -p ${output_dir}
+  cd ${output_dir}
+  repo_dir=${output_dir}/repo
+  if [ -d "${repo_dir}" ]; then
+    git -C ${repo_dir} pull origin
+  else
+    git clone ${DAATO_REPO} ${repo_dir}
+  fi
+  pushd ${repo_dir} > /dev/null
+  yarn install --frozen-lockfile
+  if [ "${argc_app}" == "frontend" ]; then
+    cp ./apps/frontend/.env.${argc_identifier} ./apps/frontend/.env
+    yarn nx run frontend:build:production --skip-nx-cache
+  elif [ "${argc_app}" == "api" ]; then
+    yarn nx run api:build --skip-nx-cache
+  fi
+  docker buildx build --platform=linux/amd64 -t daato.azurecr.io/${argc_app}:${identifier} -f ./apps/${argc_app}/Dockerfile .
+  az acr login -n daato --subscription common
+  docker push daato.azurecr.io/${argc_app}:${identifier}
+  popd > /dev/null
+}
+eval "$(argc --argc-eval "$0" "$@")"
