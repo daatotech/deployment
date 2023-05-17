@@ -16,3 +16,6 @@ variable "auth0" {
     client_secret = string
   })
 }
+variable "sendgrid_token" {
+  type = string
+}

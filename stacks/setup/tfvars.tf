@@ -11,6 +11,7 @@ resource "local_file" "tfvars" {
       username = data.azurerm_container_registry.daato.admin_username
       password = data.azurerm_container_registry.daato.admin_password
     }
+    sendgrid_token = var.sendgrid_token
   })
 }
 

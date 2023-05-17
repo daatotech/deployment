@@ -15,7 +15,9 @@ variable "azurecr" {
 variable "core_api_url" {
   type = string
 }
-
+variable "sendgrid_token" {
+  type = string
+}
 terraform {
   required_providers {
     azurerm = {
@@ -28,10 +30,11 @@ provider "azurerm" {
   features {}
 }
 module "instance" {
-  source       = "../../modules/azurerm/daato-instance"
-  identifier   = var.identifier
-  az_location  = var.az_location
-  auth0        = var.auth0
-  core_api_url = var.core_api_url
-  azurecr      = var.azurecr
+  source         = "../../modules/azurerm/daato-instance"
+  identifier     = var.identifier
+  az_location    = var.az_location
+  auth0          = var.auth0
+  core_api_url   = var.core_api_url
+  azurecr        = var.azurecr
+  sendgrid_token = var.sendgrid_token
 }

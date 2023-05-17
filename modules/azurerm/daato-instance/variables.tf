@@ -7,6 +7,9 @@ variable "az_location" {
 variable "core_api_url" {
   type = string
 }
+variable "sendgrid_token" {
+  type = string
+}
 variable "azurecr" {
   type = object({
     url      = string
