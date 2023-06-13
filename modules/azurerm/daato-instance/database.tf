@@ -8,6 +8,9 @@ resource "azurerm_cosmosdb_account" "this" {
     location          = azurerm_resource_group.this.location
     failover_priority = 0
   }
+  capabilities {
+    name = "EnableServerless"
+  }
   consistency_policy {
     consistency_level       = "BoundedStaleness"
     max_interval_in_seconds = 300
