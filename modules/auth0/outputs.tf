@@ -19,11 +19,18 @@ output "clients" {
 }
 output "roles" {
   value = {
-    contributor          = auth0_role.contributor.id
-    isolated_contributor = auth0_role.isolated_contributor.id
-    group_manager        = auth0_role.group_manager.id
-    subsidiary_manager   = auth0_role.subsidiary_manager.id
-    admin                = auth0_role.admin.id
+    contributor                         = auth0_role.contributor.id
+    isolated_contributor                = auth0_role.isolated_contributor.id
+    group_manager                       = auth0_role.group_manager.id
+    subsidiary_manager                  = auth0_role.subsidiary_manager.id
+    admin                               = auth0_role.admin.id
+    scs_module_manager                  = auth0_role.scs_module_manager.id
+    scs_supplier_relationship_manager   = auth0_role.scs_supplier_relationship_manager.id
+    gen_profile_manager                 = auth0_role.gen_profile_manager.id
+    subsidiary_unit_manager             = auth0_role.subsidiary_unit_manager.id
+    subsidiary_approver                 = auth0_role.subsidiary_approver.id
+    consulting_client_reporting_manager = auth0_role.consulting_client_reporting_manager.id
+    consulting_client_manager           = auth0_role.consulting_client_manager.id
   }
 }
 output "resource_servers" {
