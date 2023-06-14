@@ -36,18 +36,25 @@ variable "auth0" {
         client_secret = string
       })
     })
-    domain          = string
-    organization_id = string
+    domain           = string
+    organization_id  = string
     resource_servers = object({
       api  = string
       core = string
     })
     roles = object({
-      admin                = string
-      contributor          = string
-      group_manager        = string
-      isolated_contributor = string
-      subsidiary_manager   = string
+      admin                               = string
+      contributor                         = string
+      group_manager                       = string
+      isolated_contributor                = string
+      subsidiary_manager                  = string
+      scs_module_manager                  = string
+      scs_supplier_relationship_manager   = string
+      gen_profile_manager                 = string
+      subsidiary_unit_manager             = string
+      subsidiary_approver                 = string
+      consulting_client_reporting_manager = string
+      consulting_client_manager           = string
     })
   })
 }
