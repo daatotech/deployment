@@ -12,6 +12,7 @@ resource "local_file" "tfvars" {
       password = data.azurerm_container_registry.daato.admin_password
     }
     sendgrid_token = var.sendgrid_token
+    single_org     = var.instances[index(keys(module.auth0), each.key)].single_org
   })
 }
 

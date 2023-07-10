@@ -17,6 +17,12 @@ variable "azurecr" {
     password = string
   })
 }
+
+variable "single_org" {
+  type    = bool
+  default = true
+}
+
 variable "auth0" {
   type = object({
     clients = object({
@@ -36,8 +42,8 @@ variable "auth0" {
         client_secret = string
       })
     })
-    domain           = string
-    organization_id  = string
+    domain          = string
+    organization_id = string
     resource_servers = object({
       api  = string
       core = string

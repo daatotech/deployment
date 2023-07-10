@@ -7,6 +7,7 @@ variable "instances" {
     core_api_url        = string
     api_host            = string
     ui_host             = string
+    single_org          = bool
   }))
 }
 variable "auth0" {
