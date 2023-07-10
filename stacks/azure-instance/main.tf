@@ -12,6 +12,13 @@ variable "azurecr" {
     password = string
   })
 }
+
+variable "single_org" {
+  type    = bool
+  default = true
+}
+
+
 variable "core_api_url" {
   type = string
 }
@@ -37,4 +44,5 @@ module "instance" {
   core_api_url   = var.core_api_url
   azurecr        = var.azurecr
   sendgrid_token = var.sendgrid_token
+  single_org     = var.single_org
 }

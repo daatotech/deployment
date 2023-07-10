@@ -5,6 +5,7 @@ provider "registry.terraform.io/auth0/auth0" {
   version = "0.46.0"
   hashes = [
     "h1:+fzBMGiO++3mn7VmQFvALbNp4yBT7paH5JQSAPKQDYA=",
+    "h1:7AcQIieDbzTtKXxlxYoRv4aA3kJQPe+djID2SaW1OJY=",
     "zh:17f3a56153ed4ac8c5fcc382f6dcb95bb31f8d2fca1c487e362c192ac420ea56",
     "zh:1f69de344a7afb6e13073ff0b7b681f5016f05be6bc39a20bd3fce1e431541d0",
     "zh:37bead36e2e2677e957f7b9a8385772fe72f7b01c79db413ff0480a0dcc5e9d5",
@@ -25,6 +26,7 @@ provider "registry.terraform.io/auth0/auth0" {
 provider "registry.terraform.io/hashicorp/azurerm" {
   version = "3.56.0"
   hashes = [
+    "h1:LEcmSqmNoexpH6NuglCS8dwLyZctQ6YAee2B9FL/9Cc=",
     "h1:qoV9BwWKSQ2znS9w9o8XTfUKSawX3tZlKRy36AkyNwg=",
     "zh:0c35cf5c57edc337cc8a63399b605f1ec3316841869098f6b5b1f40f76f03d04",
     "zh:230b82b9ef64983505920a66e655f8ca807fccf6e0e2ccbdb5ede301871270b2",
@@ -45,6 +47,7 @@ provider "registry.terraform.io/hashicorp/local" {
   version = "2.4.0"
   hashes = [
     "h1:R97FTYETo88sT2VHfMgkPU3lzCsZLunPftjSI5vfKe8=",
+    "h1:ZUEYUmm2t4vxwzxy1BvN1wL6SDWrDxfH7pxtzX8c6d0=",
     "zh:53604cd29cb92538668fe09565c739358dc53ca56f9f11312b9d7de81e48fab9",
     "zh:66a46e9c508716a1c98efbf793092f03d50049fa4a83cd6b2251e9a06aca2acf",
     "zh:70a6f6a852dd83768d0778ce9817d81d4b3f073fab8fa570bff92dcb0824f732",

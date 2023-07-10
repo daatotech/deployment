@@ -25,7 +25,7 @@ locals {
     CORE_AUTH0_M2M_AUDIENCE                           = var.auth0.resource_servers.core
     FRONTEND_URL                                      = "https://${azurerm_linux_web_app.frontend.default_hostname}"
     SENDGRID_TOKEN                                    = var.sendgrid_token
-    SINGLE_ORG                                        = "true"
+    SINGLE_ORG                                        = "${var.single_org}"
     CORE_URL                                          = var.core_api_url
     FRONTEND_DOMAIN                                   = azurerm_linux_web_app.frontend.default_hostname
     PORT                                              = 80
