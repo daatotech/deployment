@@ -40,7 +40,6 @@ locals {
     DOCKER_REGISTRY_SERVER_PASSWORD                   = var.azurecr.password
     WEBSITES_ENABLE_APP_SERVICE_STORAGE               = "false"
     PUBLIC_CONTAINER_CONNECTION_STRING                = "DefaultEndpointsProtocol=https;AccountName=uploadtestforeng245;AccountKey=YYLUgWt+ftOx1p5S9FNNV4aKems0sZlclid9/PXait4zfG85kWrNgMoztb2dZbJKJB62DAvzgtf7+ASttsCruw==;EndpointSuffix=core.windows.net"
-    WEBSITE_HTTPLOGGING_RETENTION_DAYS                = "30"
   }
 }
 resource "azurerm_linux_web_app" "api" {
