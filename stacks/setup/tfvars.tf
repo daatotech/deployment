@@ -1,3 +1,4 @@
+
 resource "local_file" "tfvars" {
   for_each = module.auth0
   filename = "${path.module}/../azure-instance/terraform.${each.key}.tfvars.json"
@@ -6,6 +7,11 @@ resource "local_file" "tfvars" {
     identifier   = each.key
     az_location  = "West Europe"
     core_api_url = var.instances[index(keys(module.auth0), each.key)].core_api_url
+    redis = {
+      host     = data.azurerm_redis_cache.this.hostname
+      port     = data.azurerm_redis_cache.this.ssl_port
+      password = data.azurerm_redis_cache.this.primary_access_key
+    }
     azurecr = {
       url      = data.azurerm_container_registry.daato.login_server
       username = data.azurerm_container_registry.daato.admin_username
