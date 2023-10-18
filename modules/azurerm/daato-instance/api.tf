@@ -3,6 +3,11 @@ locals {
     DB_URL                                            = azurerm_cosmosdb_account.this.connection_strings[0]
     JWT_AUDIENCE                                      = var.auth0.resource_servers.api
     ENV_NAME                                          = var.identifier
+    EXTERNAL_REDIS_HOST                               = var.redis.host
+    EXTERNAL_REDIS_PORT                               = tostring(var.redis.port)
+    EXTERNAL_REDIS_TLS_HOST                           = var.redis.host
+    EXTERNAL_REDIS_PASSWORD                           = var.redis.password
+    EXTERNAL_REDIS_QUEUE_PREFIX                       = var.identifier
     AUTH0_DOMAIN                                      = var.auth0.domain
     AUTH0_MANAGEMENT_CLIENT_ID                        = var.auth0.clients.management.client_id
     AUTH0_MANAGEMENT_CLIENT_SECRET                    = var.auth0.clients.management.client_secret

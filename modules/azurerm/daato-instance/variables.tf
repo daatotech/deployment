@@ -23,6 +23,14 @@ variable "single_org" {
   default = true
 }
 
+variable "redis" {
+  type = object({
+    host     = string
+    port     = number
+    password = string
+  })
+}
+
 variable "auth0" {
   type = object({
     clients = object({
