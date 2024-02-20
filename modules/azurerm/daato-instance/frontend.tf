@@ -6,8 +6,8 @@ resource "azurerm_linux_web_app" "frontend" {
   https_only          = true
   site_config {
     application_stack {
-      docker_image     = "daato.azurecr.io/frontend"
-      docker_image_tag = var.identifier
+      docker_registry_url = "daatodev.azurecr.io"
+      docker_image_name   = "frontend:main"
     }
   }
   app_settings = {
