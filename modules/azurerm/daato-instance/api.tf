@@ -38,7 +38,7 @@ resource "azurerm_linux_web_app" "api" {
   https_only          = true
   site_config {
     application_stack {
-      docker_registry_url = "https://daatodev.azurecr.io"
+      docker_registry_url = "https://${var.azurecr.url}"
       docker_image_name   = "api:main"
     }
   }
