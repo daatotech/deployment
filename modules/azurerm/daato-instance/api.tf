@@ -28,6 +28,9 @@ locals {
     SERVER_ERROR_EMAIL_SENDER          = "serverlogs@daato.io"
     SERVER_ERROR_EMAILS                = "sreeganesh@daato.net mariusz.wozniak@codete.com maciej.chamera@codete.com emil.tomczuk@daato.net ilham.muhammad@daato.net giulia.fumagalli@daato.net alina.buzhynskaya@codete.com"
     PUBLIC_CONTAINER_CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=uploadtestforeng245;AccountKey=YYLUgWt+ftOx1p5S9FNNV4aKems0sZlclid9/PXait4zfG85kWrNgMoztb2dZbJKJB62DAvzgtf7+ASttsCruw==;EndpointSuffix=core.windows.net"
+    DOCKER_REGISTRY_SERVER_URL         = var.azurecr.url
+    DOCKER_REGISTRY_SERVER_USERNAME    = var.azurecr.username
+    DOCKER_REGISTRY_SERVER_PASSWORD    = var.azurecr.password
   }
 }
 resource "azurerm_linux_web_app" "api" {
