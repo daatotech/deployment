@@ -30,3 +30,11 @@ variable "redis" {
     password = string
   })
 }
+variable "core_client_secret" {
+  type      = string
+  sensitive = true
+}
+variable "api_client_secret" {
+  type      = string
+  sensitive = true
+}

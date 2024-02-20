@@ -25,6 +25,14 @@ variable "az_location" {
 variable "identifier" {
   type = string
 }
+variable "core_client_secret" {
+  type      = string
+  sensitive = true
+}
+variable "api_client_secret" {
+  type      = string
+  sensitive = true
+}
 module "instance" {
   source                    = "../../modules/azurerm/daato-instance"
   identifier                = var.identifier
@@ -33,4 +41,6 @@ module "instance" {
   azurecr                   = var.azurecr
   sendgrid_token            = var.sendgrid_token
   redis                     = var.redis
+  api_client_secret         = var.api_client_secret
+  core_client_secret        = var.core_client_secret
 }
